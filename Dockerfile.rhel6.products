@@ -1,0 +1,23 @@
+# Container used to run salt tests focusing on SUSE Manager use cases
+#
+# NAME                  toaster-rhel6-testing
+# VERSION               0
+
+FROM rhel6
+MAINTAINER Mihai Dinca: "mdinca@suse.com"
+
+RUN rpm -e subscription-manager
+
+
+####### Install missing dependencies from centos6 ########
+RUN yum-config-manager --add-repo http://centos.s.uw.edu/centos/6/os/x86_64/
+RUN yum-config-manager --add-repo http://centos.s.uw.edu/centos/6/updates/x86_64/
+RUN yum-config-manager --add-repo http://centos.s.uw.edu/centos/6/extras/x86_64/
+
+RUN rpm --import http://centos.s.uw.edu/centos/6/os/x86_64/RPM-GPG-KEY-CentOS-6
+
+RUN yum-config-manager --add-repo http://download.opensuse.org/repositories/home:/mdinca:/minimal-rhel-saltstack/RHEL_6
+
+RUN yum -y --nogpgcheck install salt-minion python-salt-testing
+
+# RUN yum -y --nogpgcheck install test-package
