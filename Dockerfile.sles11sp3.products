@@ -1,0 +1,17 @@
+# Container used to run salt tests focusing on SUSE Manager use cases
+#
+# NAME                  toaster-sles11sp3-products
+# VERSION               0
+
+FROM registry.mgr.suse.de/suma-3.0-salt-sle11sp3
+MAINTAINER Mihai Dinca: "mdinca@suse.com"
+
+
+# Use your credentials for the 'nu.novell' domain within the URL, in case required
+RUN zypper ar -f http://download.opensuse.org/repositories/systemsmanagement:/saltstack:/products/SLE_11_SP4/ "salt"
+RUN zypper mr -p 1 salt
+
+# make sure the package repository is up to date
+RUN zypper --non-interactive --gpg-auto-import-keys ref
+
+RUN zypper --non-interactive in salt-master salt-minion salt-proxy
