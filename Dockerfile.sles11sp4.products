@@ -12,6 +12,7 @@ RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLES11-SP4-Pool/sle-11-x86_64/'
 RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLES11-SP4-Updates/sle-11-x86_64/' "SLES11 SP4 Updates"
 RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLE11-SDK-SP4-Pool/sle-11-x86_64' "SLE-SDK11 SP4 Pool"
 RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLE11-SDK-SP4-Updates/sle-11-x86_64' "SLE-SDK11 SP4 Updates"
+RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLES11-SP4-SUSE-Manager-Tools/sle-11-x86_64/' "SLE-Manager-Tools 11 SP4 Pool"
 
 
 # Use your credentials for the 'nu.novell' domain within the URL, in case required
