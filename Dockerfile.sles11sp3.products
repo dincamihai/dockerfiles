@@ -3,8 +3,15 @@
 # NAME                  toaster-sles11sp3-products
 # VERSION               0
 
-FROM registry.mgr.suse.de/suma-3.0-salt-sle11sp3
+FROM registry.mgr.suse.de/sles11sp3:1.0.0
 MAINTAINER Mihai Dinca: "mdinca@suse.com"
+
+
+# Use your credentials for the 'nu.novell' domain within the URL, in case required
+RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLES11-SP3-Pool/sle-11-x86_64/' "SLES11 SP3 Pool"
+RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLES11-SP3-Updates/sle-11-x86_64/' "SLES11 SP3 Updates"
+RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLE11-SDK-SP3-Pool/sle-11-x86_64' "SLE-SDK11 SP3 Pool"
+RUN zypper ar -f 'http://nu.novell.com/repo/$RCE/SLE11-SDK-SP3-Updates/sle-11-x86_64' "SLE-SDK11 SP3 Updates"
 
 
 # Use your credentials for the 'nu.novell' domain within the URL, in case required
