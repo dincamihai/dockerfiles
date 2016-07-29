@@ -19,5 +19,3 @@ RUN rpm --import http://centos.s.uw.edu/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
 RUN yum-config-manager --add-repo http://download.opensuse.org/repositories/home:/mdinca:/minimal-rhel-saltstack/RHEL_7
 
 RUN yum -y --nogpgcheck install salt-minion python-salt-testing
-
-# RUN yum -y --nogpgcheck install test-package
