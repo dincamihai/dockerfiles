@@ -16,6 +16,6 @@ RUN yum-config-manager --add-repo http://centos.s.uw.edu/centos/6/extras/x86_64/
 RUN rpm --import http://centos.s.uw.edu/centos/6/os/x86_64/RPM-GPG-KEY-CentOS-6
 
 
-RUN yum-config-manager --add-repo http://download.opensuse.org/repositories/home:/mdinca:/minimal-rhel-saltstack/RHEL_6
+RUN yum-config-manager --add-repo http://download.suse.de/ibs/home:/mdinca:/base/RHEL_6
 
 RUN yum -y --nogpgcheck install salt-minion python-salt-testing
