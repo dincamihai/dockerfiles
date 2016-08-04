@@ -1,0 +1,26 @@
+# Container used to run salt tests focusing on SUSE Manager use cases
+#
+# NAME                  toaster-rhel71-testing
+# VERSION               0
+
+FROM rhel7.1
+MAINTAINER Matei Albu
+
+RUN rpm -e subscription-manager
+
+
+####### Install missing dependencies from centos7 ########
+RUN yum-config-manager --add-repo http://mirror.nsc.liu.se/centos-store/7.1.1503/os/x86_64/
+RUN yum-config-manager --add-repo http://mirror.nsc.liu.se/centos-store/7.1.1503/updates/x86_64/
+RUN yum-config-manager --add-repo http://mirror.nsc.liu.se/centos-store/7.1.1503/extras/x86_64/
+RUN rpm --import  http://mirror.nsc.liu.se/centos-store/7.1.1503/os/x86_64/RPM-GPG-KEY-CentOS-7
+
+
+RUN yum-config-manager --add-repo http://download.opensuse.org/repositories/home:/mdinca:/minimal-rhel-saltstack/RHEL_7
+
+RUN yum -y --nogpgcheck install salt-minion python-salt-testing
+
+###### Generate the machine-id
+RUN systemd-machine-id-setup
+
+# RUN yum -y --nogpgcheck install test-package
